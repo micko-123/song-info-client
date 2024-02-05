@@ -17,3 +17,8 @@
 .form {
   width: 80%;
 }
+
+.filter {
+  margin-left: 5px;
+  align-items: center;
+}

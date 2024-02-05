@@ -5,6 +5,7 @@ import {
   updateSongAPI,
   deleteSongByIdAPI,
 } from "../../apis/index";
+
 import { setSongSlice } from "../slice/song";
 import {
   addSongSlice,
@@ -19,7 +20,9 @@ import {
   GET_SONG_BY_ID,
   UPDATE_SONG_BY_ID,
 } from "../types";
+
 import { put, takeEvery } from "redux-saga/effects";
+
 export function* getSongsSaga() {
   const songs = yield getSongsAPI();
   yield put(getSongsSlice(songs.data.data.data));
@@ -30,8 +33,9 @@ export function* getSongByIdSaga(action) {
   yield put(setSongSlice(action._id));
 }
 export function* createSongSaga(action) {
-  yield createSongAPI(action.song);
-  yield put(addSongSlice(action.song));
+  const song = yield createSongAPI(action.song);
+  console.log(`song from saga ${song}`);
+  yield put(addSongSlice(song.data.data.data));
 }
 
 export function* updateSongSaga(action) {

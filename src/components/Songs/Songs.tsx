@@ -13,6 +13,7 @@ const Songs = () => {
   useEffect(() => {
     dispatch({ type: GET_SONGS });
   }, []);
+  
   console.log(songs);
 
   return (
@@ -29,9 +30,10 @@ const Songs = () => {
             <div className="buttons">
               <button onClick={() => dispatch(setSongSlice(song))}>Edit</button>
               <button
-                onClick={() =>
-                  dispatch({ type: DELETE_SONG_BY_ID, _id: song._id })
-                }
+                onClick={() => {
+                  console.log(song._id);
+                  dispatch({ type: DELETE_SONG_BY_ID, _id: song._id });
+                }}
               >
                 Delete
               </button>

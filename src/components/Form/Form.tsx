@@ -8,7 +8,7 @@ const Form: React.FC = () => {
   const song = useSelector((state) => state.song);
 
   const dispatch = useDispatch();
-  const handleChange = (prop) => (event) => {
+  const handleChange = (prop: string) => (event) => {
     dispatch(setSongSlice({ ...song, [prop]: event.target.value }));
   };
 
@@ -65,7 +65,11 @@ const Form: React.FC = () => {
           placeholder="genre"
           className="input"
         />
-        <button type="submit" className="button" onClick={() => handleSubmit()}>
+        <button
+          type="submit"
+          className="button"
+          onClick={() => handleSubmit(e)}
+        >
           Submit
         </button>
       </form>
