@@ -4,6 +4,7 @@ const songs = createSlice({
   name: "songs",
   initialState: [
     {
+      _id: "",
       title: "",
       artist: "",
       album: "",
@@ -21,12 +22,12 @@ const songs = createSlice({
     },
     editSongSlice: (state, action) => {
       state = state.map((i) =>
-        i.id == action.payload.id ? action.payload : i
+        i._id == action.payload._id ? action.payload : i
       );
       return state;
     },
     deleteSongSlice: (state, action) => {
-      state = state.filter((i) => i.id !== action.payload);
+      state = state.filter((i) => i._id !== action.payload);
       return state;
     },
   },

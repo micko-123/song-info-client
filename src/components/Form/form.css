@@ -1,8 +1,16 @@
 .form {
   display: flex;
   flex-direction: column;
-  max-width: 300px;
+  max-width: 400px;
   margin: 0 auto;
+}
+
+.addSong {
+  align-content: center;
+  color: #007bff;
+  border: #0056b3 solid;
+  margin: 20px;
+
 }
 
 .input {

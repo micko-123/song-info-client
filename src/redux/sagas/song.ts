@@ -22,12 +22,12 @@ import {
 import { put, takeEvery } from "redux-saga/effects";
 export function* getSongsSaga() {
   const songs = yield getSongsAPI();
-  yield put(getSongsSlice(songs.data));
+  yield put(getSongsSlice(songs.data.data.data));
 }
 
 export function* getSongByIdSaga(action) {
-  yield getSongByIdAPI(action.id);
-  yield put(setSongSlice(action.id));
+  yield getSongByIdAPI(action._id);
+  yield put(setSongSlice(action._id));
 }
 export function* createSongSaga(action) {
   yield createSongAPI(action.song);
@@ -40,8 +40,8 @@ export function* updateSongSaga(action) {
 }
 
 export function* deleteSongByIdSaga(action) {
-  yield deleteSongByIdAPI(action.id);
-  yield put(deleteSongSlice(action.id));
+  yield deleteSongByIdAPI(action._id);
+  yield put(deleteSongSlice(action._id));
 }
 
 export function* watchSongsAsync() {

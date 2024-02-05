@@ -1,28 +1,43 @@
-import Song from "./Song/Song";
-import { useDispatch, useSelector } from 'react-redux';
-import { GET_SONGS } from "../../redux/types";
-// import { setSongSlice } from "../../redux/slice/song";
+// import Song from "./Song/Song";
+import { useDispatch, useSelector } from "react-redux";
+import { GET_SONGS, DELETE_SONG_BY_ID } from "../../redux/types";
+import { setSongSlice } from "../../redux/slice/song";
 import { useEffect } from "react";
+import "./song.css"; // Import CSS file for styling
+import { Song } from "../../types";
 
 const Songs = () => {
+  const songs: Song[] = useSelector((state) => state.songs);
+  const dispatch = useDispatch();
 
-  const songs = useSelector(state => state.songs)
-  const dispatch = useDispatch()
-
-  useEffect(()=>{dispatch({type: GET_SONGS})},[])
-  console.log(songs)
+  useEffect(() => {
+    dispatch({ type: GET_SONGS });
+  }, []);
+  console.log(songs);
 
   return (
     <div>
-      <Song
-        song={{ title: "haha", album: "gg", artist: "lili", genre: "pop" }}
-        onEdit={() => {
-          console.log("edit");
-        }}
-        onDelete={() => {
-          console.log("delete");
-        }}
-      />
+      {songs &&
+        songs.map((song: Song) => (
+          <div className="card" key={song._id}>
+            <div className="song-info">
+              <h3>Title: {song.title}</h3>
+              <p>Album: {song.album}</p>
+              <p>Artist: {song.artist}</p>
+              <p>Genre: {song.genre}</p>
+            </div>
+            <div className="buttons">
+              <button onClick={() => dispatch(setSongSlice(song))}>Edit</button>
+              <button
+                onClick={() =>
+                  dispatch({ type: DELETE_SONG_BY_ID, _id: song._id })
+                }
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        ))}
     </div>
   );
 };
