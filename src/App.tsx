@@ -4,10 +4,12 @@ import Form from "./components/Form/Form";
 import Navbar from "./components/Navbar/Navbar";
 import DisplayStats from "./components/Stats/DisplayStats";
 import Homepage from "./pages/Homepage";
+import { Provider } from "react-redux";
+import  store  from "./store"
 
 function App() {
   return (
-    <div>
+    <Provider store={store}>
       <Router>
         <Navbar />
         <Routes>
@@ -16,7 +18,7 @@ function App() {
           <Route path="/stats" element={<DisplayStats />} />
         </Routes>
       </Router>
-    </div>
+    </Provider>
   );
 }
 

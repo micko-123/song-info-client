@@ -1,7 +1,10 @@
+import Songs from "../components/Songs/Songs"
 
 const Homepage = () => {
   return (
-    <div>Homepage</div>
+    <div>
+      <Songs />
+    </div>
   )
 }
 
