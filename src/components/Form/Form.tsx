@@ -30,50 +30,43 @@ const Form: React.FC = () => {
   };
 
   return (
-    <div>
-      <h2 className="addSong">ADD SONG</h2>
-      <form onSubmit={handleSubmit} className="form">
-        <input
-          type="text"
-          name="title"
-          value={song.title}
-          onChange={handleChange("title")}
-          placeholder="title"
-          className="input"
-        />
-        <input
-          type="text"
-          name="album"
-          value={song.album}
-          onChange={handleChange("album")}
-          placeholder="album"
-          className="input"
-        />
-        <input
-          type="text"
-          name="artist"
-          value={song.artist}
-          onChange={handleChange("artist")}
-          placeholder="artist"
-          className="input"
-        />
-        <input
-          type="text"
-          name="genre"
-          value={song.genre}
-          onChange={handleChange("genre")}
-          placeholder="genre"
-          className="input"
-        />
-        <button
-          type="submit"
-          className="button"
-          onClick={() => handleSubmit(e)}
-        >
-          Submit
-        </button>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit} className="form">
+      <input
+        type="text"
+        name="title"
+        value={song.title}
+        onChange={handleChange("title")}
+        placeholder="title"
+        className="input"
+      />
+      <input
+        type="text"
+        name="album"
+        value={song.album}
+        onChange={handleChange("album")}
+        placeholder="album"
+        className="input"
+      />
+      <input
+        type="text"
+        name="artist"
+        value={song.artist}
+        onChange={handleChange("artist")}
+        placeholder="artist"
+        className="input"
+      />
+      <input
+        type="text"
+        name="genre"
+        value={song.genre}
+        onChange={handleChange("genre")}
+        placeholder="genre"
+        className="input"
+      />
+      <button type="submit" className="button" onClick={() => handleSubmit(e)}>
+        Submit
+      </button>
+    </form>
   );
 };
 

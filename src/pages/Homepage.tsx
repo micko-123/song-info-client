@@ -1,30 +1,39 @@
 import { useSelector } from "react-redux";
-import Dropdown from "../components/Dropdown/Dropdown";
+import { Flex, Box } from "rebass";
 import Form from "../components/Form/Form";
 import Songs from "../components/Songs/Songs";
-import "./homepage.css";
 import { Song } from "../types";
+
+const homeStyle = {
+  display: "flex",
+  justifyContent: "space-between",
+};
+
+const songListStyle = {
+  width: "80%",
+};
+
+const formStyle = {
+  width: "80%",
+};
+
+const filterStyle = {
+  marginLeft: "5px",
+  alignItems: "center",
+};
 
 const Homepage = () => {
   const songs: Song[] = useSelector((state) => state.songs);
 
   return (
-    <div className="home">
-      <div className="filter">
-        {/* <Dropdown
-          options={songs}
-          onSelect={() => {
-            console.log("ds");
-          }}
-        /> */}
-      </div>
-      <div className="songList">
+    <Flex css={homeStyle}>
+      <Box css={songListStyle}>
         <Songs />
-      </div>
-      <div className="form">
+      </Box>
+      <Box css={formStyle}>
         <Form />
-      </div>
-    </div>
+      </Box>
+    </Flex>
   );
 };
 
